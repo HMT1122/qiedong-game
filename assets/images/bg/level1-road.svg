@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="sky3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB"/>
+      <stop offset="100%" style="stop-color:#E0F4FF"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="1280" height="720" fill="url(#sky3)"/>
+  
+  <!-- 人行道 (左側) -->
+  <rect x="0" y="400" width="300" height="320" fill="#D3D3D3"/>
+  <g stroke="#999" stroke-width="2" stroke-dasharray="20,10">
+    <line x1="0" y1="430" x2="300" y2="430"/>
+    <line x1="0" y1="460" x2="300" y2="460"/>
+    <line x1="0" y1="490" x2="300" y2="490"/>
+    <line x1="0" y1="520" x2="300" y2="520"/>
+    <line x1="0" y1="550" x2="300" y2="550"/>
+    <line x1="0" y1="580" x2="300" y2="580"/>
+    <line x1="0" y1="610" x2="300" y2="610"/>
+    <line x1="0" y1="640" x2="300" y2="640"/>
+    <line x1="0" y1="670" x2="300" y2="670"/>
+  </g>
+  
+  <!-- 綠色安全區 (人行道內側) -->
+  <rect x="20" y="410" width="260" height="300" fill="#C8E6C9" opacity="0.5"/>
+  
+  <!-- 馬路 (中間) -->
+  <rect x="300" y="400" width="400" height="320" fill="#333"/>
+  <!-- 中央分隔線 -->
+  <g stroke="white" stroke-width="4" stroke-dasharray="40,30">
+    <line x1="500" y1="400" x2="500" y2="720"/>
+  </g>
+  <!-- 車道線 -->
+  <g stroke="white" stroke-width="2" stroke-dasharray="30,20" opacity="0.5">
+    <line x1="400" y1="400" x2="400" y2="720"/>
+    <line x1="600" y1="400" x2="600" y2="720"/>
+  </g>
+  
+  <!-- 斑馬線 (橫跨馬路) -->
+  <g fill="white" opacity="0.9">
+    <rect x="300" y="520" width="400" height="15"/>
+    <rect x="300" y="550" width="400" height="15"/>
+    <rect x="300" y="580" width="400" height="15"/>
+    <rect x="300" y="610" width="400" height="15"/>
+  </g>
+  
+  <!-- 紅綠燈 -->
+  <g transform="translate(250, 280)">
+    <rect x="0" y="0" width="60" height="160" fill="#222" rx="5"/>
+    <circle cx="30" cy="40" r="18" fill="#D32F2F"/>
+    <circle cx="30" cy="80" r="18" fill="#FFC107" opacity="0.3"/>
+    <circle cx="30" cy="120" r="18" fill="#4CAF50" opacity="0.3"/>
+  </g>
+  
+  <!-- 右側人行道 -->
+  <rect x="700" y="400" width="580" height="320" fill="#D3D3D3"/>
+  <g stroke="#999" stroke-width="2" stroke-dasharray="20,10">
+    <line x1="700" y1="430" x2="1280" y2="430"/>
+    <line x1="700" y1="460" x2="1280" y2="460"/>
+    <line x1="700" y1="490" x2="1280" y2="490"/>
+    <line x1="700" y1="520" x2="1280" y2="520"/>
+    <line x1="700" y1="550" x2="1280" y2="550"/>
+    <line x1="700" y1="580" x2="1280" y2="580"/>
+    <line x1="700" y1="610" x2="1280" y2="610"/>
+    <line x1="700" y1="640" x2="1280" y2="640"/>
+    <line x1="700" y1="670" x2="1280" y2="670"/>
+  </g>
+  <rect x="720" y="410" width="540" height="300" fill="#C8E6C9" opacity="0.5"/>
+  
+  <!-- 路邊樹木 -->
+  <g>
+    <ellipse cx="100" cy="350" rx="35" ry="60" fill="#228B22"/>
+    <rect x="95" y="390" width="10" height="50" fill="#8B4513"/>
+    <ellipse cx="350" cy="320" rx="40" ry="70" fill="#2E8B57"/>
+    <rect x="345" y="370" width="10" height="60" fill="#8B4513"/>
+    <ellipse cx="900" cy="330" rx="45" ry="80" fill="#228B22"/>
+    <rect x="895" y="390" width="10" height="60" fill="#8B4513"/>
+    <ellipse cx="1150" cy="340" rx="35" ry="60" fill="#2E8B57"/>
+    <rect x="1145" y="380" width="10" height="50" fill="#8B4513"/>
+  </g>
+  
+  <!-- 建築物背景 -->
+  <g opacity="0.6">
+    <rect x="800" y="100" width="200" height="250" fill="#A9A9A9" rx="3"/>
+    <rect x="820" y="120" width="50" height="100" fill="#696969" rx="2"/>
+    <rect x="880" y="120" width="50" height="100" fill="#696969" rx="2"/>
+    <rect x="940" y="120" width="50" height="100" fill="#696969" rx="2"/>
+  </g>
+  
+  <!-- 標示文字 -->
+  <text x="640" y="80" font-family="Noto Sans TC" font-size="36" font-weight="bold" fill="#2E7D32" text-anchor="middle">茄苳國小附近道路</text>
+  <text x="150" y="380" font-family="Noto Sans TC" font-size="20" font-weight="bold" fill="#2E7D32" text-anchor="middle">人行道</text>
+  <text x="500" y="380" font-family="Noto Sans TC" font-size="20" font-weight="bold" fill="white" text-anchor="middle">馬路</text>
+  <text x="990" y="380" font-family="Noto Sans TC" font-size="20" font-weight="bold" fill="#2E7D32" text-anchor="middle">人行道</text>
+</svg>
