@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="sky2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB"/>
+      <stop offset="100%" style="stop-color:#E0F4FF"/>
+    </linearGradient>
+    <linearGradient id="ground2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8FBC8F"/>
+      <stop offset="100%" style="stop-color:#556B2F"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="1280" height="720" fill="url(#sky2)"/>
+  <circle cx="1100" cy="100" r="60" fill="#FFD700" opacity="0.9"/>
+  
+  <g fill="white" opacity="0.8">
+    <ellipse cx="150" cy="80" rx="50" ry="25"/>
+    <ellipse cx="190" cy="70" rx="40" ry="20"/>
+    <ellipse cx="230" cy="80" rx="35" ry="22"/>
+  </g>
+  
+  <!-- 校園景觀 -->
+  <g>
+    <rect x="100" y="200" width="500" height="250" fill="#DEB887" rx="5"/>
+    <rect x="120" y="220" width="140" height="120" fill="#8B4513" rx="3"/>
+    <rect x="280" y="220" width="140" height="120" fill="#8B4513" rx="3"/>
+    <rect x="440" y="220" width="140" height="120" fill="#8B4513" rx="3"/>
+    <polygon points="90,200 350,100 610,200" fill="#8B0000"/>
+  </g>
+  
+  <rect y="450" width="1280" height="270" fill="url(#ground2)"/>
+  <rect y="450" width="1280" height="60" fill="#D3D3D3"/>
+  <g stroke="#999" stroke-width="2" stroke-dasharray="20,10">
+    <line x1="0" y1="480" x2="1280" y2="480"/>
+  </g>
+  
+  <!-- 樹木 -->
+  <ellipse cx="800" cy="350" rx="60" ry="100" fill="#228B22"/>
+  <rect x="795" y="430" width="10" height="80" fill="#8B4513"/>
+  <ellipse cx="1000" cy="380" rx="40" ry="70" fill="#2E8B57"/>
+  <rect x="995" y="430" width="10" height="50" fill="#8B4513"/>
+  
+  <text x="640" y="150" font-family="Noto Sans TC" font-size="48" font-weight="900" fill="#2E7D32" text-anchor="middle" opacity="0.15">茄苳校園</text>
+</svg>
