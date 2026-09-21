@@ -127,7 +127,10 @@ export class Level2Scene extends Scene {
         this.playSound('correct');
         await this.showDialog('qiedong', this.getDialog('level2.correct'), { typewriter: true });
         
-        this.addStar(1);
+        if (!this.game.stateManager.isLevelCompleted('level2')) {
+            this.addStar(1);
+        }
+        this.game.stateManager.completeLevel('level2');
         this.levelCompleted = true;
         
         await this.delay(1500);

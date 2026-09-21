@@ -51,7 +51,7 @@ export class Level1Scene extends Scene {
                         </div>
                         
                         <!-- 車子 (危險選項時出現) -->
-                        <img class="level1-car" id="danger-car" src="assets/images/objects/car.png" alt="行駛中的汽車" aria-hidden="true">
+                        <img class="level1-car" id="danger-car" src="assets/images/objects/car.svg" alt="行駛中的汽車" aria-hidden="true">
                         
                         <!-- 斑馬線 -->
                         <div class="level1-crosswalk" id="crosswalk" aria-hidden="true"></div>
@@ -124,7 +124,10 @@ export class Level1Scene extends Scene {
         this.playSound('correct');
         await this.showDialog('qiedong', this.getDialog('level1.correct'), { typewriter: true });
         
-        this.addStar(1);
+        if (!this.game.stateManager.isLevelCompleted('level1')) {
+            this.addStar(1);
+        }
+        this.game.stateManager.completeLevel('level1');
         this.levelCompleted = true;
         
         await this.delay(1500);

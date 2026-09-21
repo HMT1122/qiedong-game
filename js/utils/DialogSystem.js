@@ -61,23 +61,43 @@ export class DialogSystem {
             this.dialogElement.classList.add('visible');
         });
         
-        // 打字機效果
-        if (typewriter) {
-            this.playTypewriter(text, textEl, typewriterSpeed, () => {
-                if (duration > 0) {
-                    setTimeout(() => this.hide(), duration);
+        return new Promise(resolve => {
+            let isResolved = false;
+            const finish = () => {
+                if (isResolved) return;
+                isResolved = true;
+                if (this.dialogElement) {
+                    this.dialogElement.onclick = null;
                 }
                 if (onComplete) onComplete();
-            });
-        } else {
-            textEl.textContent = text;
-            if (duration > 0) {
-                setTimeout(() => this.hide(), duration);
+                if (duration > 0) {
+                    setTimeout(() => {
+                        this.hide();
+                        resolve();
+                    }, duration);
+                } else {
+                    resolve();
+                }
+            };
+            
+            // 點擊對話框可立即完成打字
+            this.dialogElement.onclick = () => {
+                if (this.typewriterInterval) {
+                    clearInterval(this.typewriterInterval);
+                    this.typewriterInterval = null;
+                    textEl.textContent = text;
+                    finish();
+                }
+            };
+            
+            // 打字機效果
+            if (typewriter) {
+                this.playTypewriter(text, textEl, typewriterSpeed, finish);
+            } else {
+                textEl.textContent = text;
+                finish();
             }
-            if (onComplete) onComplete();
-        }
-        
-        return Promise.resolve();
+        });
     }
     
     playTypewriter(text, element, speed, onComplete) {

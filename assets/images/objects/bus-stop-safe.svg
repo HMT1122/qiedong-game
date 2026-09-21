@@ -1,24 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
   <!-- 亭頂 -->
-  <path d="M0,0 L200,0 L220,40 L-20,40 Z" fill="#FFD700" opacity="0.9"/>
-  <path d="M0,0 L200,0 L220,40 L-20,40 Z" stroke="#B8860B" stroke-width="3" fill="none"/>
+  <path d="M10,20 L160,20 L175,50 L-5,50 Z" fill="#FFD700" opacity="0.9"/>
+  <path d="M10,20 L160,20 L175,50 L-5,50 Z" stroke="#B8860B" stroke-width="2" fill="none"/>
   
   <!-- 支柱 -->
-  <rect x="10" y="40" width="15" height="160" fill="#8B4513"/>
-  <rect x="175" y="40" width="15" height="160" fill="#8B4513"/>
+  <rect x="20" y="50" width="10" height="120" fill="#8B4513"/>
+  <rect x="140" y="50" width="10" height="120" fill="#8B4513"/>
   
   <!-- 長椅 -->
-  <rect x="30" y="140" width="140" height="20" fill="#8B4513" rx="3"/>
-  <rect x="30" y="120" width="140" height="30" fill="#A0522D" rx="3"/>
-  
-  <!-- 站牌 -->
-  <rect x="230" y="40" width="70" height="100" fill="#2E7D32" rx="5"/>
-  <text x="265" y="85" font-family="Noto Sans TC" font-size="16" font-weight="bold" fill="white" text-anchor="middle">校<br>車<br>站</text>
+  <rect x="35" y="130" width="100" height="15" fill="#8B4513" rx="3"/>
+  <rect x="35" y="115" width="100" height="20" fill="#A0522D" rx="3"/>
   
   <!-- 安全區域標示 (綠色地面) -->
-  <rect x="-20" y="180" width="240" height="20" fill="#4CAF50" opacity="0.4" stroke="#4CAF50" stroke-width="2" stroke-dasharray="8,4" rx="5"/>
+  <rect x="0" y="170" width="200" height="25" fill="#4CAF50" opacity="0.4" stroke="#4CAF50" stroke-width="2" stroke-dasharray="8,4" rx="5"/>
+  <text x="100" y="188" font-family="Noto Sans TC" font-size="13" font-weight="bold" fill="#1B5E20" text-anchor="middle">安全候車區</text>
   
-  <!-- 核取方塊 -->
-  <circle cx="100" cy="20" r="25" fill="#4CAF50" stroke="#2E7D32" stroke-width="3"/>
-  <path d="M70,20 L95,45 L130,10" stroke="white" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- 核取勾勾 -->
+  <circle cx="165" cy="45" r="22" fill="#4CAF50" stroke="#2E7D32" stroke-width="2"/>
+  <path d="M152,45 L162,55 L178,37" stroke="white" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

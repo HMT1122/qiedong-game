@@ -23,7 +23,10 @@
     <rect x="540" y="170" width="140" height="180" fill="#8B4513" rx="3"/>
     <polygon points="190,150 450,50 710,150" fill="#8B0000"/>
     <rect x="420" y="350" width="160" height="150" fill="#2E7D32" rx="15"/>
-    <text x="500" y="420" font-family="Noto Sans TC" font-size="32" font-weight="bold" fill="white" text-anchor="middle">茄苳<br>國小</text>
+    <text x="500" y="405" font-family="Noto Sans TC" font-size="32" font-weight="bold" fill="white" text-anchor="middle">
+      <tspan x="500" dy="0">茄苳</tspan>
+      <tspan x="500" dy="38">國小</tspan>
+    </text>
   </g>
   
   <rect y="500" width="1280" height="220" fill="#8FBC8F"/>

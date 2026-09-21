@@ -107,18 +107,14 @@ export class GameEngine {
             this.currentScene = null;
         }
         
-        // 取得或建立場景實例
-        let sceneInstance = this.sceneInstances.get(sceneName);
+        // 取得或建立場景實例 (每次進入建立全新乾淨實例，確保事件與狀態不殘留)
         const SceneClass = this.scenes[sceneName];
         
         if (!SceneClass) {
             throw new Error(`場景不存在: ${sceneName}`);
         }
         
-        if (!sceneInstance) {
-            sceneInstance = new SceneClass(this);
-            this.sceneInstances.set(sceneName, sceneInstance);
-        }
+        const sceneInstance = new SceneClass(this);
         
         // 進入新場景
         this.currentSceneName = sceneName;
@@ -274,10 +270,16 @@ export class GameEngine {
     }
     
     showDialog(character, text, options = {}) {
+        if (this.tts && this.stateManager?.isVoiceEnabled()) {
+            this.tts.speak(text).catch(() => {});
+        }
         return this.dialogSystem.show(character, text, options);
     }
     
     hideDialog() {
+        if (this.tts) {
+            this.tts.stop();
+        }
         this.dialogSystem.hide();
     }
     

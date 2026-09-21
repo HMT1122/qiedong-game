@@ -60,6 +60,10 @@ export class EndingScene extends Scene {
                     
                     <!-- 操作按鈕 -->
                     <div style="display:flex; flex-direction:column; gap:var(--space-md); width:100%; margin-top:var(--space-lg);">
+                        <button class="btn btn-primary btn-large" id="cert-btn" style="background: linear-gradient(135deg, #FF9800, #F57C00); box-shadow: 0 4px 12px rgba(245, 124, 0, 0.3);">
+                            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            🎖️ 領取交通小達人榮譽證書
+                        </button>
                         <button class="btn btn-primary btn-large" id="parent-btn">
                             <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
                             小手牽大手・親子共學
@@ -131,6 +135,7 @@ export class EndingScene extends Scene {
     }
     
     bindEvents() {
+        this.$('#cert-btn').addEventListener('click', () => this.onCertClick());
         this.$('#parent-btn').addEventListener('click', () => this.onParentClick());
         this.$('#replay-btn').addEventListener('click', () => this.onReplayClick());
         this.$('#share-btn').addEventListener('click', () => this.onShareClick());
@@ -182,6 +187,127 @@ export class EndingScene extends Scene {
                 buttons: [{ text: '關閉', class: 'btn-primary', fullWidth: true }]
             });
         });
+    }
+    
+    async onCertClick() {
+        this.playSound('click');
+        const defaultName = '交通小達人';
+        
+        this.showModal({
+            title: '🎖️ 交通小達人榮譽證書',
+            icon: 'success',
+            body: `
+                <div style="text-align:center;">
+                    <p style="margin-bottom:8px; font-size:var(--font-size-sm); color:var(--color-text-light);">請輸入小朋友的名字或座號：</p>
+                    <input type="text" id="student-name-input" value="${defaultName}" maxlength="15" 
+                           style="width:85%; font-size:16px; text-align:center; padding:8px 12px; border:2px solid var(--color-primary); border-radius:var(--radius-md); margin-bottom:12px; font-family:inherit;" />
+                    <div id="cert-preview-container" style="max-width:100%; overflow:hidden; border-radius:var(--radius-md); box-shadow:var(--shadow-sm); border:1px solid var(--color-border);">
+                        <canvas id="cert-canvas" width="800" height="560" style="width:100%; height:auto; display:block;"></canvas>
+                    </div>
+                </div>
+            `,
+            buttons: [
+                {
+                    text: '📥 下載證書圖片',
+                    class: 'btn-primary',
+                    fullWidth: true,
+                    onClick: () => {
+                        this.downloadCertificate();
+                        return false;
+                    }
+                },
+                {
+                    text: '關閉',
+                    class: 'btn-secondary',
+                    onClick: () => true
+                }
+            ],
+            closeOnOverlayClick: true
+        });
+        
+        setTimeout(() => {
+            const input = document.getElementById('student-name-input');
+            const canvas = document.getElementById('cert-canvas');
+            if (canvas && input) {
+                this.renderCertificate(canvas, input.value || defaultName);
+                input.addEventListener('input', () => {
+                    this.renderCertificate(canvas, input.value.trim() || defaultName);
+                });
+            }
+        }, 100);
+    }
+    
+    renderCertificate(canvas, name) {
+        const ctx = canvas.getContext('2d');
+        const w = canvas.width;
+        const h = canvas.height;
+        
+        // 背景底色
+        ctx.fillStyle = '#FFFDF7';
+        ctx.fillRect(0, 0, w, h);
+        
+        // 雙重邊框
+        ctx.strokeStyle = '#2E7D32';
+        ctx.lineWidth = 14;
+        ctx.strokeRect(16, 16, w - 32, h - 32);
+        
+        ctx.strokeStyle = '#FFD700';
+        ctx.lineWidth = 4;
+        ctx.strokeRect(28, 28, w - 56, h - 56);
+        
+        // 學校與證書標題
+        ctx.fillStyle = '#1B5E20';
+        ctx.font = 'bold 32px "Noto Sans TC", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText('桃園市茄苳國小', w / 2, 85);
+        
+        ctx.fillStyle = '#D32F2F';
+        ctx.font = '900 40px "Noto Sans TC", sans-serif';
+        ctx.fillText('交通安全小達人 · 榮譽證書', w / 2, 142);
+        
+        // 恭喜姓名
+        ctx.fillStyle = '#212121';
+        ctx.font = 'bold 30px "Noto Sans TC", sans-serif';
+        ctx.fillText(`恭喜  ${name}  同學`, w / 2, 215);
+        
+        // 內文說明
+        ctx.fillStyle = '#424242';
+        ctx.font = '20px "Noto Sans TC", sans-serif';
+        ctx.fillText('認真完成「茄冬寶寶上學安全日記」交通安全互動學習，', w / 2, 270);
+        ctx.fillText('精熟「停、看、聽、走」、校車死角與大型車內輪差防制，', w / 2, 305);
+        ctx.fillText('展現優良交通守法素養，特頒此證，以資鼓勵！', w / 2, 340);
+        
+        // 6 顆金星
+        ctx.fillStyle = '#FF9800';
+        ctx.font = '32px sans-serif';
+        ctx.fillText('⭐ ⭐ ⭐ ⭐ ⭐ ⭐', w / 2, 395);
+        
+        // 落款日期
+        const today = new Date();
+        const dateStr = `${today.getFullYear()} 年 ${today.getMonth() + 1} 月 ${today.getDate()} 日`;
+        
+        ctx.fillStyle = '#2E7D32';
+        ctx.font = 'bold 20px "Noto Sans TC", sans-serif';
+        ctx.textAlign = 'left';
+        ctx.fillText('茄苳國小學輔校安科', 65, 475);
+        ctx.font = '16px "Noto Sans TC", sans-serif';
+        ctx.fillText('交通安全扎根教育', 65, 505);
+        
+        ctx.textAlign = 'right';
+        ctx.font = 'bold 20px "Noto Sans TC", sans-serif';
+        ctx.fillText('茄冬寶寶 敬頒 🚸', w - 65, 475);
+        ctx.font = '16px "Noto Sans TC", sans-serif';
+        ctx.fillText(dateStr, w - 65, 505);
+    }
+    
+    downloadCertificate() {
+        const canvas = document.getElementById('cert-canvas');
+        if (!canvas) return;
+        const link = document.createElement('a');
+        link.download = '茄苳國小交通小達人證書.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+        this.showToast('證書已開始下載！', 'success');
     }
     
     delay(ms) {

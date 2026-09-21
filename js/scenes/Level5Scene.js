@@ -128,17 +128,44 @@ export class Level5Scene extends Scene {
         if (!dragTarget || !dragArea) return;
         
         // 滑鼠事件
+        this._mouseMoveHandler = (e) => this.onDrag(e);
+        this._mouseUpHandler = (e) => this.endDrag(e);
         dragTarget.addEventListener('mousedown', (e) => this.startDrag(e));
-        document.addEventListener('mousemove', (e) => this.onDrag(e));
-        document.addEventListener('mouseup', (e) => this.endDrag(e));
+        document.addEventListener('mousemove', this._mouseMoveHandler);
+        document.addEventListener('mouseup', this._mouseUpHandler);
         
         // 觸控事件
+        this._touchMoveHandler = (e) => this.onDrag(e.touches[0]);
+        this._touchEndHandler = (e) => this.endDrag(e.changedTouches[0]);
         dragTarget.addEventListener('touchstart', (e) => this.startDrag(e.touches[0]), { passive: false });
-        document.addEventListener('touchmove', (e) => this.onDrag(e.touches[0]), { passive: false });
-        document.addEventListener('touchend', (e) => this.endDrag(e.changedTouches[0]));
+        document.addEventListener('touchmove', this._touchMoveHandler, { passive: false });
+        document.addEventListener('touchend', this._touchEndHandler);
         
         // 鍵盤支援 (方向鍵移動)
         dragTarget.addEventListener('keydown', (e) => this.onKeyDrag(e));
+
+        // 友善設計：點擊安全區也能直接送達
+        const safeZone = this.$('#safe-zone');
+        if (safeZone) {
+            safeZone.addEventListener('click', () => {
+                if (this.step === 2 && !this.levelCompleted) {
+                    this.onDropSuccess();
+                }
+            });
+        }
+    }
+
+    unbindEvents() {
+        if (this._mouseMoveHandler) {
+            document.removeEventListener('mousemove', this._mouseMoveHandler);
+            document.removeEventListener('mouseup', this._mouseUpHandler);
+            document.removeEventListener('touchmove', this._touchMoveHandler);
+            document.removeEventListener('touchend', this._touchEndHandler);
+            this._mouseMoveHandler = null;
+            this._mouseUpHandler = null;
+            this._touchMoveHandler = null;
+            this._touchEndHandler = null;
+        }
     }
     
     startDrag(e) {
@@ -350,7 +377,10 @@ export class Level5Scene extends Scene {
         
         await this.showDialog('qiedong', this.getDialog('level5.success'), { typewriter: true });
         
-        this.addStar(1);
+        if (!this.game.stateManager.isLevelCompleted('level5')) {
+            this.addStar(1);
+        }
+        this.game.stateManager.completeLevel('level5');
         this.levelCompleted = true;
         
         await this.delay(2000);

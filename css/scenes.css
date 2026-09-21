@@ -446,8 +446,18 @@
     animation: doorOpen 0.5s ease-out 0.5s forwards;
 }
 
+.level3-scene .character {
+    bottom: 12px;
+    left: 10%;
+    transform: none;
+    width: 72px;
+    height: 72px;
+}
+
 .level3-wait-btn {
-    margin: var(--space-lg) 0;
+    position: relative;
+    z-index: 20;
+    margin: var(--space-md) auto;
     animation: btnPulse 1.5s ease-in-out infinite;
 }
 
@@ -494,7 +504,8 @@
     flex-direction: column;
     gap: var(--space-md);
     width: 100%;
-    max-width: 380px;
+    max-width: 480px;
+    margin-top: var(--space-lg);
 }
 
 .level3-option {
@@ -561,24 +572,24 @@
 }
 
 .level4-bg {
-    max-height: 55vh;
+    max-height: 38vh;
 }
 
 .level4-behaviors {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--space-md);
+    gap: var(--space-sm);
     width: 100%;
     max-width: 480px;
-    margin-top: var(--space-lg);
+    margin-top: var(--space-xs);
 }
 
 .level4-behavior {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-sm);
-    padding: var(--space-lg);
+    gap: 4px;
+    padding: var(--space-sm) var(--space-md);
     background: var(--color-surface);
     border: 3px solid var(--color-border);
     border-radius: var(--radius-lg);
@@ -589,8 +600,8 @@
 .level4-behavior:hover:not(:disabled),
 .level4-behavior:focus-visible {
     border-color: var(--color-primary);
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 .level4-behavior.correct {
@@ -604,13 +615,13 @@
 }
 
 .level4-behavior-icon {
-    width: 64px;
-    height: 64px;
+    width: 48px;
+    height: 48px;
     border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
+    font-size: 24px;
 }
 
 .level4-behavior.correct .level4-behavior-icon {

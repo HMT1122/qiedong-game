@@ -9,7 +9,6 @@ export class Level4Scene extends Scene {
     constructor(game) {
         super(game);
         this.answered = new Set();
-        this.correctCount = 0;
         this.levelCompleted = false;
     }
     
@@ -19,7 +18,6 @@ export class Level4Scene extends Scene {
     
     async onEnterAsync(data) {
         this.answered.clear();
-        this.correctCount = 0;
         this.levelCompleted = false;
         await this.playIntroDialog();
     }
@@ -57,11 +55,12 @@ export class Level4Scene extends Scene {
                 </main>
                 
                 <div class="options-area level4-behaviors" id="behaviors" role="group" aria-label="判斷車上行為可否">
-                    <p style="text-align:center; color:var(--color-text-light); margin-bottom:var(--space-sm); font-weight:500; grid-column:1/-1;">請判斷以下行為在車上「可以」或「不可以」</p>
+                    <p style="text-align:center; color:var(--color-text-light); margin-bottom:var(--space-sm); font-weight:500; grid-column:1/-1;">點擊行為卡片，判斷在車上「可以」還是「不可以」</p>
                     ${behaviors.map(b => `
-                        <button class="level4-behavior" data-id="${b.id}" data-correct="${b.correct}" role="button" tabindex="0" aria-label="${b.text}${b.correct ? '：可以' : '：不可以'}">
+                        <button class="level4-behavior" data-id="${b.id}" data-correct="${b.correct}" role="button" tabindex="0" aria-label="${b.text}">
                             <div class="level4-behavior-icon" aria-hidden="true">${b.icon}</div>
                             <span class="level4-behavior-text">${b.text}</span>
+                            <span class="level4-badge" style="display:none; font-size:12px; margin-top:4px; font-weight:bold;"></span>
                         </button>
                     `).join('')}
                 </div>
@@ -94,47 +93,90 @@ export class Level4Scene extends Scene {
         });
     }
     
-    async onBehaviorSelect(btn) {
+    onBehaviorSelect(btn) {
         const id = btn.dataset.id;
-        const isCorrect = btn.dataset.correct === 'true';
+        const shouldBeAllowed = btn.dataset.correct === 'true';
+        const behaviorText = btn.querySelector('.level4-behavior-text').textContent;
+        const icon = btn.querySelector('.level4-behavior-icon').textContent;
         
         if (this.answered.has(id) || this.levelCompleted) return;
-        
-        this.answered.add(id);
         this.playSound('click');
         
+        this.showModal({
+            title: '行為判斷',
+            icon: 'info',
+            body: `
+                <div style="text-align:center; padding: 10px 0;">
+                    <div style="font-size: 40px; margin-bottom: 8px;">${icon}</div>
+                    <p style="font-size: 18px; font-weight: bold; margin-bottom: 8px;">「${behaviorText}」</p>
+                    <p style="color: var(--color-text-light);">在行駛中的校車上，可以這樣做嗎？</p>
+                </div>
+            `,
+            buttons: [
+                {
+                    text: '🙆 可以',
+                    class: 'btn-primary',
+                    fullWidth: true,
+                    onClick: () => this.handleUserAnswer(btn, id, true, shouldBeAllowed)
+                },
+                {
+                    text: '🙅 不可以',
+                    class: 'btn-secondary',
+                    fullWidth: true,
+                    onClick: () => this.handleUserAnswer(btn, id, false, shouldBeAllowed)
+                }
+            ],
+            closeOnOverlayClick: true
+        });
+    }
+    
+    async handleUserAnswer(btn, id, userChoice, shouldBeAllowed) {
+        const isCorrect = (userChoice === shouldBeAllowed);
+        
         if (isCorrect) {
+            this.answered.add(id);
             btn.classList.add('correct');
-            this.correctCount++;
+            btn.disabled = true;
+            
+            const badge = btn.querySelector('.level4-badge');
+            if (badge) {
+                badge.style.display = 'block';
+                badge.style.color = shouldBeAllowed ? 'var(--color-success)' : '#D32F2F';
+                badge.textContent = shouldBeAllowed ? '✓ 可以 (安全)' : '✓ 不可以 (危險)';
+            }
+            
             this.playSound('correct');
             await this.showDialog('qiedong', this.getDialog(`level4.correct.${id}`), { typewriter: true });
+            
+            await this.delay(1200);
+            this.hideDialog();
+            
+            // 4 個題目都答對即過關
+            if (this.answered.size === 4) {
+                this.levelCompleted = true;
+                if (!this.game.stateManager.isLevelCompleted('level4')) {
+                    this.addStar(1);
+                }
+                this.game.stateManager.completeLevel('level4');
+                
+                await this.delay(500);
+                this.playSound('levelComplete');
+                await this.showDialog('qiedong', this.getDialog('level4.complete'), { typewriter: true });
+                await this.delay(1500);
+                this.hideDialog();
+                await this.changeScene('level5', { fromLevel: 'level4' });
+            }
         } else {
-            btn.classList.add('wrong');
             this.playSound('error');
             this.$('#character').classList.add('sad');
-            
-            // 車子震動
             this.element.classList.add('level4-bus-shake');
-            await this.delay(500);
-            this.element.classList.remove('level4-bus-shake');
-            this.$('#character').classList.remove('sad');
+            
+            setTimeout(() => this.element.classList.remove('level4-bus-shake'), 500);
+            setTimeout(() => this.$('#character').classList.remove('sad'), 1200);
             
             await this.showDialog('qiedong', this.getDialog(`level4.wrong.${id}`), { typewriter: true });
-        }
-        
-        this.hideDialog();
-        
-        // 檢查是否全部答對 (玩家已答完所有行為)
-        // 正確行為有 1 個（安靜坐好），錯誤行為 3 個；全部答完才過關
-        if (this.answered.size === 4) {
-            this.levelCompleted = true;
-            await this.delay(1000);
-            this.playSound('levelComplete');
-            await this.showDialog('qiedong', this.getDialog('level4.complete'), { typewriter: true });
-            this.addStar(1);
-            await this.delay(1500);
+            await this.delay(2000);
             this.hideDialog();
-            await this.changeScene('level5', { fromLevel: 'level4' });
         }
     }
     

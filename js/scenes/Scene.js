@@ -153,6 +153,5 @@ export class Scene {
             this.element.parentNode.removeChild(this.element);
         }
         this.element = null;
-        this.game = null;
     }
 }

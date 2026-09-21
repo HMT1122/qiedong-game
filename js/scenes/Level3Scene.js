@@ -189,15 +189,15 @@ export class Level3Scene extends Scene {
         ctx.stroke();
         ctx.setLineDash([]);
         
-        // 內輪差標籤
+        // 內輪差標籤 (置於弧形下方避免與死角文字重疊)
         ctx.fillStyle = '#E65100';
         ctx.font = 'bold 12px Noto Sans TC';
         ctx.textAlign = 'center';
-        ctx.fillText('內輪差區域', innerWheelX, innerWheelY - innerWheelR - 10);
+        ctx.fillText('內輪差區域', innerWheelX, Math.min(h - 10, innerWheelY + innerWheelR + 14));
         
-        // 動畫脈衝效果 (使用 CSS 動畫類別更好，這裡用簡單重繪)
+        // 動畫脈衝效果
         if (this.phase === 'dangerDemo') {
-            requestAnimationFrame(() => this.drawDangerZones());
+            this.canvasAnimationId = requestAnimationFrame(() => this.drawDangerZones());
         }
     }
     
@@ -315,7 +315,10 @@ export class Level3Scene extends Scene {
         this.playSound('correct');
         await this.showDialog('qiedong', this.getDialog('level3.correct'), { typewriter: true });
         
-        this.addStar(2); // 核心關卡給 2 顆星
+        if (!this.game.stateManager.isLevelCompleted('level3')) {
+            this.addStar(2); // 核心關卡給 2 顆星
+        }
+        this.game.stateManager.completeLevel('level3');
         this.starsEarned = 2;
         this.levelCompleted = true;
         

@@ -132,11 +132,13 @@ body {
 #game-root {
     width: 100vw;
     height: 100vh;
+    height: 100dvh;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 }
 
 .screen {
@@ -271,7 +273,7 @@ body {
 /* 音效開關 */
 .audio-toggle {
     position: fixed;
-    top: var(--space-md);
+    top: calc(env(safe-area-inset-top, 0px) + 12px);
     right: var(--space-md);
     width: 52px;
     height: 52px;
@@ -313,7 +315,7 @@ body {
 /* 暫停按鈕 */
 .pause-btn {
     position: fixed;
-    top: var(--space-md);
+    top: calc(env(safe-area-inset-top, 0px) + 12px);
     left: var(--space-md);
     width: 52px;
     height: 52px;
@@ -338,7 +340,7 @@ body {
 /* 星星計數器 */
 .star-counter {
     position: fixed;
-    top: var(--space-md);
+    top: calc(env(safe-area-inset-top, 0px) + 12px);
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -700,8 +702,9 @@ body {
     justify-content: space-between;
     width: 100%;
     max-width: 600px;
-    padding: var(--space-md) var(--space-lg);
-    margin-bottom: var(--space-md);
+    padding: calc(env(safe-area-inset-top, 0px) + 64px) var(--space-md) var(--space-xs);
+    margin-bottom: var(--space-xs);
+    z-index: 5;
 }
 
 .level-title {
