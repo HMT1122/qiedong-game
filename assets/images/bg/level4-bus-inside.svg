@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="sky6" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB"/>
+      <stop offset="100%" style="stop-color:#E0F4FF"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="1280" height="720" fill="url(#sky6)"/>
+  
+  <!-- 校車車廂內部 (側視圖) -->
+  <g transform="translate(100, 150)">
+    <!-- 車廂框架 -->
+    <rect x="0" y="0" width="1000" height="350" fill="#F5F5DC" stroke="#8B4513" stroke-width="4" rx="10"/>
+    
+    <!-- 天花板 -->
+    <rect x="0" y="0" width="1000" height="40" fill="#FFF8DC"/>
+    
+    <!-- 側窗排 -->
+    <g fill="#87CEEB" opacity="0.6">
+      <rect x="20" y="50" width="100" height="150" rx="5"/>
+      <rect x="150" y="50" width="100" height="150" rx="5"/>
+      <rect x="280" y="50" width="100" height="150" rx="5"/>
+      <rect x="410" y="50" width="100" height="150" rx="5"/>
+      <rect x="540" y="50" width="100" height="150" rx="5"/>
+      <rect x="670" y="50" width="100" height="150" rx="5"/>
+      <rect x="800" y="50" width="100" height="150" rx="5"/>
+      <rect x="930" y="50" width="60" height="150" rx="5"/>
+    </g>
+    
+    <!-- 座位排 (左側) -->
+    <g fill="#8B4513">
+      <rect x="30" y="220" width="100" height="50" rx="5"/>  <!-- 座墊 -->
+      <rect x="30" y="200" width="100" height="30" rx="5"/>  <!-- 靠背 -->
+      <rect x="160" y="220" width="100" height="50" rx="5"/>
+      <rect x="160" y="200" width="100" height="30" rx="5"/>
+      <rect x="290" y="220" width="100" height="50" rx="5"/>
+      <rect x="290" y="200" width="100" height="30" rx="5"/>
+      <rect x="420" y="220" width="100" height="50" rx="5"/>
+      <rect x="420" y="200" width="100" height="30" rx="5"/>
+      <rect x="550" y="220" width="100" height="50" rx="5"/>
+      <rect x="550" y="200" width="100" height="30" rx="5"/>
+      <rect x="680" y="220" width="100" height="50" rx="5"/>
+      <rect x="680" y="200" width="100" height="30" rx="5"/>
+      <rect x="810" y="220" width="100" height="50" rx="5"/>
+      <rect x="810" y="200" width="100" height="30" rx="5"/>
+      <rect x="940" y="220" width="50" height="50" rx="5"/>
+      <rect x="940" y="200" width="50" height="30" rx="5"/>
+    </g>
+    
+    <!-- 座位排 (右側) -->
+    <g fill="#8B4513">
+      <rect x="30" y="270" width="100" height="50" rx="5"/>
+      <rect x="30" y="300" width="100" height="30" rx="5"/>
+      <rect x="160" y="270" width="100" height="50" rx="5"/>
+      <rect x="160" y="300" width="100" height="30" rx="5"/>
+      <rect x="290" y="270" width="100" height="50" rx="5"/>
+      <rect x="290" y="300" width="100" height="30" rx="5"/>
+      <rect x="420" y="270" width="100" height="50" rx="5"/>
+      <rect x="420" y="300" width="100" height="30" rx="5"/>
+      <rect x="550" y="270" width="100" height="50" rx="5"/>
+      <rect x="550" y="300" width="100" height="30" rx="5"/>
+      <rect x="680" y="270" width="100" height="50" rx="5"/>
+      <rect x="680" y="300" width="100" height="30" rx="5"/>
+      <rect x="810" y="270" width="100" height="50" rx="5"/>
+      <rect x="810" y="300" width="100" height="30" rx="5"/>
+      <rect x="940" y="270" width="50" height="50" rx="5"/>
+      <rect x="940" y="300" width="50" height="30" rx="5"/>
+    </g>
+    
+    <!-- 過道 -->
+    <rect x="0" y="220" width="1000" height="110" fill="#D3D3D3" opacity="0.5"/>
+    
+    <!-- 安全帶提示 -->
+    <g fill="#D32F2F" font-family="Noto Sans TC" font-size="14" font-weight="bold">
+      <text x="500" y="380" text-anchor="middle">請繫好安全帶</text>
+    </g>
+  </g>
+  
+  <!-- 前方駕駛座區域 -->
+  <g transform="translate(50, 100)" opacity="0.7">
+    <rect x="0" y="0" width="200" height="200" fill="#A9A9A9" rx="5"/>
+    <rect x="20" y="20" width="80" height="80" fill="#87CEEB" opacity="0.7" rx="3"/>  <!-- 前擋風玻璃 -->
+    <circle cx="100" cy="150" r="30" fill="#333"/>  <!-- 方向盤 -->
+    <text x="100" y="200" font-family="Noto Sans TC" font-size="16" fill="#333" text-anchor="middle">司機叔叔</text>
+  </g>
+  
+  <!-- 標示文字 -->
+  <text x="640" y="80" font-family="Noto Sans TC" font-size="36" font-weight="bold" fill="#2E7D32" text-anchor="middle">校車車廂內部</text>
+  <text x="640" y="130" font-family="Noto Sans TC" font-size="20" fill="#666" text-anchor="middle">車上要安靜坐好、不走動、不伸手出窗外</text>
+</svg>
