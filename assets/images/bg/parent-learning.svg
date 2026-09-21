@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="sky9" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFF3E0"/>
+      <stop offset="100%" style="stop-color:#FFE0B2"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="1280" height="720" fill="url(#sky9)"/>
+  
+  <!-- 溫馨家庭場景 -->
+  <g transform="translate(200, 150)">
+    <!-- 沙發 -->
+    <rect x="0" y="200" width="500" height="180" fill="#8B4513" rx="10"/>
+    <rect x="20" y="220" width="460" height="140" fill="#A0522D" rx="5"/>
+    <rect x="20" y="160" width="460" height="80" fill="#A0522D" rx="5"/>  <!-- 靠背 -->
+    
+    <!-- 爸爸 -->
+    <g transform="translate(100, 100)">
+      <circle cx="0" cy="0" r="50" fill="#FFDBAC"/>  <!-- 頭 -->
+      <ellipse cx="0" cy="70" rx="40" ry="60" fill="#2196F3"/>  <!-- 身體 -->
+      <ellipse cx="-25" cy="-10" rx="8" ry="10" fill="#333"/>  <!-- 左眼 -->
+      <ellipse cx="25" cy="-10" rx="8" ry="10" fill="#333"/>  <!-- 右眼 -->
+      <path d="M-15,20 Q0,30 15,20" stroke="#333" stroke-width="3" fill="none"/>  <!-- 嘴巴 -->
+      <!-- 手舉起 -->
+      <path d="M-40,70 Q-80,50 -100,30" stroke="#FFDBAC" stroke-width="12" fill="none" stroke-linecap="round"/>
+      <circle cx="-100" cy="30" r="15" fill="#FFDBAC"/>
+    </g>
+    
+    <!-- 媽媽 -->
+    <g transform="translate(300, 100)">
+      <circle cx="0" cy="0" r="50" fill="#FFDBAC"/>
+      <ellipse cx="0" cy="70" rx="35" ry="60" fill="#E91E63"/>
+      <ellipse cx="-22" cy="-10" rx="7" ry="9" fill="#333"/>
+      <ellipse cx="22" cy="-10" rx="7" ry="9" fill="#333"/>
+      <path d="M-12,18 Q0,28 12,18" stroke="#333" stroke-width="3" fill="none"/>
+      <path d="M35,70 Q70,50 90,30" stroke="#FFDBAC" stroke-width="12" fill="none" stroke-linecap="round"/>
+      <circle cx="90" cy="30" r="15" fill="#FFDBAC"/>
+    </g>
+    
+    <!-- 孩子 (茄冬寶寶) -->
+    <g transform="translate(500, 150)">
+      <circle cx="0" cy="0" r="35" fill="#FFDBAC"/>
+      <ellipse cx="0" cy="50" rx="25" ry="40" fill="#4CAF50"/>
+      <ellipse cx="-15" cy="-8" rx="5" ry="6" fill="#1B5E20"/>
+      <ellipse cx="15" cy="-8" rx="5" ry="6" fill="#1B5E20"/>
+      <path d="M-10,12 Q0,20 10,12" stroke="#1B5E20" stroke-width="2" fill="none"/>
+      <path d="M-25,50 Q-50,30 -60,10" stroke="#FFDBAC" stroke-width="8" fill="none" stroke-linecap="round"/>
+      <circle cx="-60" cy="10" r="10" fill="#FFDBAC"/>
+    </g>
+    
+    <!-- 心形連接 -->
+    <g transform="translate(250, 150)">
+      <path d="M0,0 Q-15,-15 -25,-5 Q-15,5 0,15 Q15,5 25,-5 Q15,-15 0,0" fill="#E91E63"/>
+      <path d="M0,0 Q-10,-10 -16,-3 Q-10,3 0,10 Q10,3 16,-3 Q10,-10 0,0" fill="#FFEBEE"/>
+    </g>
+  </g>
+  
+  <!-- 背景裝飾 -->
+  <g opacity="0.3" fill="#FF9800">
+    <path d="M100,600 Q120,580 110,540 Q130,560 150,520 Q120,500 100,500 Q80,500 60,520 Q40,540 60,560 Q40,540 20,580 Q40,600 100,600" transform="scale(0.8)"/>
+    <path d="M1100,600 Q1120,580 1110,540 Q1130,560 1150,520 Q1120,500 1100,500 Q1080,500 1060,520 Q1040,540 1060,560 Q1040,540 1020,580 Q1040,600 1100,600" transform="scale(0.8) translate(200, 0)"/>
+  </g>
+  
+  <!-- 標題 -->
+  <text x="640" y="80" font-family="Noto Sans TC" font-size="42" font-weight="900" fill="#E65100" text-anchor="middle">小手牽大手・親子共學</text>
+  <text x="640" y="130" font-family="Noto Sans TC" font-size="22" fill="#BF360C" text-anchor="middle">一起守護孩子上下學平安</text>
+</svg>
