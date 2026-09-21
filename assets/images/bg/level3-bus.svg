@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="sky5" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB"/>
+      <stop offset="100%" style="stop-color:#E0F4FF"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="1280" height="720" fill="url(#sky5)"/>
+  
+  <!-- 校車 (側面圖) -->
+  <g transform="translate(200, 200)">
+    <!-- 車身主體 -->
+    <rect x="0" y="0" width="600" height="220" fill="#FFD700" rx="10"/>
+    <rect x="10" y="10" width="580" height="200" fill="#FFF8DC" rx="5"/>
+    
+    <!-- 車窗排 -->
+    <g fill="#87CEEB" opacity="0.7">
+      <rect x="20" y="20" width="80" height="100" rx="3"/>
+      <rect x="110" y="20" width="80" height="100" rx="3"/>
+      <rect x="200" y="20" width="80" height="100" rx="3"/>
+      <rect x="290" y="20" width="80" height="100" rx="3"/>
+      <rect x="380" y="20" width="80" height="100" rx="3"/>
+      <rect x="470" y="20" width="80" height="100" rx="3"/>
+    </g>
+    
+    <!-- 前擋風玻璃 -->
+    <path d="M10,20 L50,20 L30,120 L10,120 Z" fill="#87CEEB" opacity="0.7"/>
+    
+    <!-- 車門區域 (右側) -->
+    <rect x="480" y="120" width="100" height="90" fill="#FFD700" rx="5" stroke="#B8860B" stroke-width="2"/>
+    <rect x="490" y="130" width="80" height="70" fill="#87CEEB" opacity="0.5" rx="3"/>
+    
+    <!-- 車頭燈 -->
+    <rect x="-10" y="40" width="15" height="40" fill="#FFD700" rx="3"/>
+    <rect x="-10" y="140" width="15" height="40" fill="#FFD700" rx="3"/>
+    
+    <!-- 尾燈 -->
+    <rect x="600" y="40" width="10" height="40" fill="#D32F2F" rx="3"/>
+    <rect x="600" y="140" width="10" height="40" fill="#D32F2F" rx="3"/>
+    
+    <!-- 輪子 -->
+    <g>
+      <circle cx="100" cy="220" r="35" fill="#222"/>
+      <circle cx="100" cy="220" r="25" fill="#444"/>
+      <circle cx="100" cy="220" r="15" fill="#666"/>
+      <circle cx="500" cy="220" r="35" fill="#222"/>
+      <circle cx="500" cy="220" r="25" fill="#444"/>
+      <circle cx="500" cy="220" r="15" fill="#666"/>
+    </g>
+    
+    <!-- 校車文字 -->
+    <text x="300" y="180" font-family="Noto Sans TC" font-size="36" font-weight="bold" fill="#D32F2F" text-anchor="middle">校車</text>
+    <text x="300" y="210" font-family="Noto Sans TC" font-size="18" fill="#8B4513" text-anchor="middle">茄苳國小專車</text>
+    
+    <!-- 停車標誌 (車門處) -->
+    <g transform="translate(480, 100)">
+      <polygon points="0,40 40,0 80,0 120,40 120,80 0,80" fill="#D32F2F"/>
+      <text x="60" y="55" font-family="Noto Sans TC" font-size="20" font-weight="bold" fill="white" text-anchor="middle">停</text>
+    </g>
+  </g>
+  
+  <!-- 背景環境 -->
+  <g opacity="0.6" transform="translate(850, 100)">
+    <rect x="0" y="0" width="200" height="250" fill="#A9A9A9" rx="3"/>
+    <rect x="20" y="20" width="50" height="100" fill="#696969" rx="2"/>
+    <rect x="80" y="20" width="50" height="100" fill="#696969" rx="2"/>
+    <rect x="140" y="20" width="50" height="100" fill="#696969" rx="2"/>
+  </g>
+  
+  <!-- 樹木 -->
+  <ellipse cx="100" cy="500" rx="40" ry="80" fill="#228B22" opacity="0.8"/>
+  <rect x="95" y="560" width="10" height="70" fill="#8B4513"/>
+  <ellipse cx="1180" cy="500" rx="40" ry="80" fill="#2E8B57" opacity="0.8"/>
+  <rect x="1175" y="560" width="10" height="70" fill="#8B4513"/>
+  
+  <!-- 地面 -->
+  <rect y="450" width="1280" height="270" fill="#8FBC8F"/>
+  <rect y="450" width="1280" height="60" fill="#D3D3D3"/>
+  
+  <!-- 標示文字 -->
+  <text x="640" y="80" font-family="Noto Sans TC" font-size="36" font-weight="bold" fill="#2E7D32" text-anchor="middle">校車靠近中</text>
+  <text x="640" y="130" font-family="Noto Sans TC" font-size="20" fill="#666" text-anchor="middle">等車完全停穩才能上車</text>
+  
+  <!-- 死角提示區域 (紅色半透明) -->
+  <g fill="#D32F2F" opacity="0.25" stroke="#D32F2F" stroke-width="2" stroke-dasharray="8,4">
+    <!-- 前方死角 -->
+    <rect x="210" y="80" width="380" height="100" rx="10"/>
+    <!-- 後方死角 -->
+    <rect x="210" y="420" width="380" height="100" rx="10"/>
+    <!-- 左側死角 -->
+    <rect x="100" y="180" width="110" height="240" rx="10"/>
+    <!-- 右側死角 (車門側) -->
+    <rect x="690" y="180" width="110" height="240" rx="10"/>
+  </g>
+  
+  <!-- 死角標籤 -->
+  <g font-family="Noto Sans TC" font-size="16" font-weight="bold" fill="#D32F2F">
+    <text x="400" y="60" text-anchor="middle">前方死角</text>
+    <text x="400" y="540" text-anchor="middle">後方死角</text>
+    <text x="40" y="300" text-anchor="middle" transform="rotate(-90 40 300)">左側死角</text>
+    <text x="820" y="300" text-anchor="middle" transform="rotate(90 820 300)">右側死角</text>
+  </g>
+  
+  <!-- 內輪差提示 (橘色) -->
+  <g fill="#FF9800" opacity="0.2" stroke="#E65100" stroke-width="3" stroke-dasharray="12,8">
+    <path d="M700,450 Q700,350 800,300 Q900,250 1000,250" fill="none"/>
+    <ellipse cx="850" cy="350" rx="80" ry="40"/>
+  </g>
+  <text x="850" y="220" font-family="Noto Sans TC" font-size="16" font-weight="bold" fill="#E65100" text-anchor="middle">內輪差區域</text>
+</svg>
