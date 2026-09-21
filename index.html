@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="茄冬寶寶上學安全日記 - 桃園茄苳國小交通安全互動遊戲">
+    <meta name="theme-color" content="#2E7D32">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="茄冬安全日記">
+    
+    <title>茄冬寶寶上學安全日記 | 桃園茄苳國小交通安全</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <link rel="apple-touch-icon" href="assets/images/icon-192.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/scenes.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <div id="game-root">
+        <!-- 載入畫面 -->
+        <div id="loading-screen" class="screen active" role="status" aria-live="polite">
+            <div class="loading-content">
+                <div class="loading-character" aria-hidden="true">
+                    <svg viewBox="0 0 120 120" class="qiedong-loader">
+                        <!-- 茄冬寶寶簡易 SVG 角色 -->
+                        <circle cx="60" cy="55" r="35" fill="#2E7D32" opacity="0.2"/>
+                        <ellipse cx="60" cy="50" rx="28" ry="25" fill="#4CAF50" class="body-bounce"/>
+                        <ellipse cx="50" cy="42" rx="6" ry="7" fill="#1B5E20" class="eye-left blink"/>
+                        <ellipse cx="70" cy="42" rx="6" ry="7" fill="#1B5E20" class="eye-right blink"/>
+                        <path d="M50 55 Q60 65 70 55" stroke="#1B5E20" stroke-width="3" fill="none" class="mouth-smile"/>
+                        <path d="M35 50 Q25 40 20 45" stroke="#2E7D32" stroke-width="4" fill="none" class="leaf-left wave"/>
+                        <path d="M85 50 Q95 40 100 45" stroke="#2E7D32" stroke-width="4" fill="none" class="leaf-right wave"/>
+                    </svg>
+                </div>
+                <h1 class="loading-title">茄冬寶寶上學安全日記</h1>
+                <p class="loading-subtitle">桃園茄苳國小 交通安全扎根教育</p>
+                <div class="loading-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <div class="loading-fill"></div>
+                </div>
+                <p class="loading-text">準備上學中... <span class="loading-percent">0%</span></p>
+            </div>
+        </div>
+
+        <!-- 遊戲畫布容器 -->
+        <div id="game-canvas" class="screen" role="application" aria-label="交通安全遊戲">
+            <!-- 所有場景將動態插入這裡 -->
+        </div>
+
+        <!-- 全域音效開關 -->
+        <button id="audio-toggle" class="audio-toggle" aria-label="開啟/關閉音效" aria-pressed="true" title="音效開關">
+            <svg class="icon-volume-on" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/></svg>
+            <svg class="icon-volume-off" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3z"/></svg>
+        </button>
+
+        <!-- 全域暫停/選單 -->
+        <button id="pause-btn" class="pause-btn" aria-label="暫停遊戲" title="暫停">
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+        </button>
+
+        <!-- 星星收集顯示 -->
+        <div id="star-counter" class="star-counter" aria-live="polite" aria-label="已收集安全星星">
+            <svg class="star-icon" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true"><path fill="#FFD700" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <span class="star-count">0</span>
+            <span class="star-total">/6</span>
+        </div>
+    </div>
+
+    <!-- 模態彈窗容器 (安全小叮嚀、暫停選單等) -->
+    <div id="modal-root" aria-hidden="true"></div>
+
+    <!-- 腳本載入 -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
