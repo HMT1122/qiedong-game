@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="sky8" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB"/>
+      <stop offset="100%" style="stop-color:#E0F4FF"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="1280" height="720" fill="url(#sky8)"/>
+  <circle cx="1100" cy="100" r="60" fill="#FFD700" opacity="0.9"/>
+  
+  <g fill="white" opacity="0.8">
+    <ellipse cx="200" cy="80" rx="50" ry="25"/>
+    <ellipse cx="240" cy="70" rx="40" ry="20"/>
+    <ellipse cx="280" cy="80" rx="35" ry="22"/>
+  </g>
+  
+  <!-- 學校建築 -->
+  <g>
+    <rect x="200" y="150" width="500" height="350" fill="#DEB887" rx="5"/>
+    <rect x="220" y="170" width="140" height="180" fill="#8B4513" rx="3"/>
+    <rect x="380" y="170" width="140" height="180" fill="#8B4513" rx="3"/>
+    <rect x="540" y="170" width="140" height="180" fill="#8B4513" rx="3"/>
+    <polygon points="190,150 450,50 710,150" fill="#8B0000"/>
+    <rect x="420" y="350" width="160" height="150" fill="#2E7D32" rx="15"/>
+    <text x="500" y="420" font-family="Noto Sans TC" font-size="32" font-weight="bold" fill="white" text-anchor="middle">茄苳<br>國小</text>
+  </g>
+  
+  <rect y="500" width="1280" height="220" fill="#8FBC8F"/>
+  <rect y="500" width="1280" height="60" fill="#D3D3D3"/>
+  
+  <g>
+    <ellipse cx="150" cy="420" rx="50" ry="100" fill="#228B22"/>
+    <rect x="145" y="500" width="10" height="80" fill="#8B4513"/>
+    <ellipse cx="1100" cy="400" rx="60" ry="110" fill="#2E8B57"/>
+    <rect x="1095" y="490" width="10" height="90" fill="#8B4513"/>
+  </g>
+  
+  <!-- 慶祝裝飾 -->
+  <g fill="#FFD700" opacity="0.9">
+    <polygon points="640,100 660,150 710,160 670,190 680,240 640,210 600,240 610,190 570,160 620,150" transform="rotate(-10 640 150)"/>
+    <polygon points="640,100 660,150 710,160 670,190 680,240 640,210 600,240 610,190 570,160 620,150" transform="translate(200, 50) rotate(15 640 150)"/>
+    <polygon points="640,100 660,150 710,160 670,190 680,240 640,210 600,240 610,190 570,160 620,150" transform="translate(-200, 30) rotate(-5 640 150)"/>
+  </g>
+  
+  <text x="640" y="150" font-family="Noto Sans TC" font-size="48" font-weight="900" fill="#2E7D32" text-anchor="middle">恭喜通關！</text>
+</svg>
