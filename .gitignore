@@ -1,0 +1,28 @@
+# 編輯器暫存
+.DS_Store
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Node.js
+node_modules/
+package.json
+package-lock.json
+yarn.lock
+
+# 測試快取
+.coverage
+.nyc_output
+
+# 大型檔案(照片拍攝後)
+assets/images/photos/
+!assets/images/photos/.gitkeep
+
+# OS
+Thumbs.db
+desktop.ini
+
+# log
+*.log
