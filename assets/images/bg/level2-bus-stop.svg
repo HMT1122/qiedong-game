@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720">
+  <defs>
+    <linearGradient id="sky4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB"/>
+      <stop offset="100%" style="stop-color:#E0F4FF"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="1280" height="720" fill="url(#sky4)"/>
+  
+  <!-- 候車亭區域 -->
+  <g transform="translate(200, 300)">
+    <!-- 亭頂 -->
+    <path d="M0,0 L200,0 L220,40 L-20,40 Z" fill="#FFD700" opacity="0.9"/>
+    <path d="M0,0 L200,0 L220,40 L-20,40 Z" stroke="#B8860B" stroke-width="3" fill="none"/>
+    
+    <!-- 支柱 -->
+    <rect x="10" y="40" width="15" height="200" fill="#8B4513"/>
+    <rect x="175" y="40" width="15" height="200" fill="#8B4513"/>
+    
+    <!-- 長椅 -->
+    <rect x="30" y="180" width="140" height="20" fill="#8B4513" rx="3"/>
+    <rect x="30" y="160" width="140" height="30" fill="#A0522D" rx="3"/>
+    
+    <!-- 站牌 -->
+    <rect x="240" y="40" width="80" height="120" fill="#2E7D32" rx="5"/>
+    <text x="280" y="100" font-family="Noto Sans TC" font-size="18" font-weight="bold" fill="white" text-anchor="middle">校<br>車<br>站</text>
+    <rect x="250" y="140" width="60" height="40" fill="#FFD700" rx="3"/>
+    <text x="280" y="168" font-family="Noto Sans TC" font-size="14" font-weight="bold" fill="#8B4513" text-anchor="middle">茄苳國小</text>
+  </g>
+  
+  <!-- 安全候車區 (綠色區域) -->
+  <rect x="180" y="500" width="250" height="80" fill="#4CAF50" opacity="0.3" stroke="#4CAF50" stroke-width="3" stroke-dasharray="10,5" rx="10"/>
+  <text x="305" y="545" font-family="Noto Sans TC" font-size="20" font-weight="bold" fill="#2E7D32" text-anchor="middle">✓ 安全候車區</text>
+  
+  <!-- 危險區1：馬路邊 -->
+  <rect x="500" y="500" width="200" height="80" fill="#D32F2F" opacity="0.2" stroke="#D32F2F" stroke-width="3" stroke-dasharray="10,5" rx="10"/>
+  <text x="600" y="545" font-family="Noto Sans TC" font-size="20" font-weight="bold" fill="#D32F2F" text-anchor="middle">✗ 馬路邊</text>
+  
+  <!-- 危險區2：車道上 -->
+  <rect x="780" y="500" width="200" height="80" fill="#D32F2F" opacity="0.3" stroke="#D32F2F" stroke-width="3" stroke-dasharray="10,5" rx="10"/>
+  <text x="880" y="545" font-family="Noto Sans TC" font-size="20" font-weight="bold" fill="#D32F2F" text-anchor="middle">✗ 車道上</text>
+  
+  <!-- 馬路 -->
+  <rect x="450" y="580" width="600" height="100" fill="#333"/>
+  <g stroke="white" stroke-width="4" stroke-dasharray="40,30">
+    <line x1="750" y1="580" x2="750" y2="680"/>
+  </g>
+  
+  <!-- 人行道 -->
+  <rect x="0" y="580" width="450" height="100" fill="#D3D3D3"/>
+  <rect x="1050" y="580" width="230" height="100" fill="#D3D3D3"/>
+  
+  <!-- 樹木 -->
+  <ellipse cx="100" cy="450" rx="40" ry="80" fill="#228B22"/>
+  <rect x="95" y="510" width="10" height="70" fill="#8B4513"/>
+  <ellipse cx="1180" cy="450" rx="40" ry="80" fill="#2E8B57"/>
+  <rect x="1175" y="510" width="10" height="70" fill="#8B4513"/>
+  
+  <!-- 建築背景 -->
+  <g opacity="0.5">
+    <rect x="700" y="100" width="300" height="250" fill="#A9A9A9" rx="3"/>
+    <rect x="720" y="120" width="60" height="100" fill="#696969" rx="2"/>
+    <rect x="800" y="120" width="60" height="100" fill="#696969" rx="2"/>
+    <rect x="880" y="120" width="60" height="100" fill="#696969" rx="2"/>
+    <rect x="960" y="120" width="60" height="100" fill="#696969" rx="2"/>
+  </g>
+  
+  <!-- 標示文字 -->
+  <text x="640" y="80" font-family="Noto Sans TC" font-size="36" font-weight="bold" fill="#2E7D32" text-anchor="middle">校車站牌</text>
+  <text x="640" y="130" font-family="Noto Sans TC" font-size="20" fill="#666" text-anchor="middle">請選擇安全的候車位置</text>
+  
+  <!-- 箭頭指示 -->
+  <g stroke="#4CAF50" stroke-width="4" fill="none">
+    <path d="M305,480 Q305,460 305,440" marker-end="url(#arrow)"/>
+  </g>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 Z" fill="#4CAF50"/>
+    </marker>
+  </defs>
+</svg>
